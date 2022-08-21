@@ -96,12 +96,7 @@ export const getDecoratorsByFieldType = (field: PrismaDMMF.Field) => {
       });
       break;
   }
-  if (field.isRequired) {
-    decorators.unshift({
-      name: 'IsDefined',
-      arguments: [],
-    });
-  } else {
+  if (!field.isRequired) {
     decorators.unshift({
       name: 'IsOptional',
       arguments: [],
@@ -132,9 +127,7 @@ export const getDecoratorsImportsByType = (field: PrismaDMMF.Field) => {
       validatorImports.add('IsBoolean');
       break;
   }
-  if (field.isRequired) {
-    validatorImports.add('IsDefined');
-  } else {
+  if (!field.isRequired) {
     validatorImports.add('IsOptional');
   }
   if (field.kind === 'enum') {
