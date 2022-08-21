@@ -89,15 +89,13 @@ will generate the following files
 Inside `User` model:
 
 ```ts
-import { IsInt, IsDefined, IsString, IsOptional } from "class-validator";
+import { IsInt, IsString, IsOptional } from "class-validator";
 import { Post } from "./";
 
 export class User {
-    @IsDefined()
     @IsInt()
     id!: number;
 
-    @IsDefined()
     @IsString()
     email!: string;
 
@@ -105,7 +103,6 @@ export class User {
     @IsString()
     name?: string;
 
-    @IsDefined()
     posts!: Post[];
 }
 
